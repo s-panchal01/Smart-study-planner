@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Pixel Art Styling */
+* {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+body {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  line-height: 1.6;
+}
+
+/* Custom Pixel Components */
+@layer components {
+  .pixel-button {
+    @apply relative px-6 py-3 font-bold text-white transition-all duration-150;
+    background: linear-gradient(45deg, #ff6b6b 0%, #ff5252 50%, #d32f2f 100%);
+    border: 3px solid #000;
+    box-shadow: 
+      inset -2px -2px 0px rgba(0,0,0,0.3),
+      inset 2px 2px 0px rgba(255,255,255,0.3),
+      4px 4px 0px #000;
+    clip-path: polygon(
+      0 0, calc(100% - 8px) 0, 100% 8px, 
+      100% 100%, 8px 100%, 0 calc(100% - 8px)
+    );
+  }
+  
+  .pixel-button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 
+      inset -2px -2px 0px rgba(0,0,0,0.3),
+      inset 2px 2px 0px rgba(255,255,255,0.3),
+      2px 2px 0px #000;
+  }
+  
+  .pixel-button:active {
+    transform: translate(4px, 4px);
+    box-shadow: 
+      inset -2px -2px 0px rgba(0,0,0,0.3),
+      inset 2px 2px 0px rgba(255,255,255,0.3);
+  }
+
+  .pixel-button-green {
+    background: linear-gradient(45deg, #4caf50 0%, #388e3c 50%, #2e7d32 100%);
+  }
+
+  .pixel-button-blue {
+    background: linear-gradient(45deg, #2196f3 0%, #1976d2 50%, #1565c0 100%);
+  }
+
+  .pixel-button-purple {
+    background: linear-gradient(45deg, #9c27b0 0%, #7b1fa2 50%, #6a1b9a 100%);
+  }
+
+  .pixel-button-yellow {
+    background: linear-gradient(45deg, #ffeb3b 0%, #fbc02d 50%, #f57f17 100%);
+    color: #000;
+  }
+
+  .pixel-card {
+    @apply relative bg-white border-4 border-black p-6;
+    box-shadow: 
+      inset -3px -3px 0px rgba(0,0,0,0.2),
+      inset 3px 3px 0px rgba(255,255,255,0.8),
+      6px 6px 0px #000;
+    clip-path: polygon(
+      0 0, calc(100% - 12px) 0, 100% 12px, 
+      100% 100%, 12px 100%, 0 calc(100% - 12px)
+    );
+  }
+
+  .pixel-card-dark {
+    @apply bg-gray-800 text-white;
+    box-shadow: 
+      inset -3px -3px 0px rgba(255,255,255,0.1),
+      inset 3px 3px 0px rgba(0,0,0,0.5),
+      6px 6px 0px #000;
+  }
+
+  .pixel-input {
+    @apply w-full px-4 py-3 border-4 border-black bg-white text-black;
+    box-shadow: 
+      inset 3px 3px 0px rgba(0,0,0,0.2),
+      inset -3px -3px 0px rgba(255,255,255,0.8);
+    clip-path: polygon(
+      0 0, calc(100% - 8px) 0, 100% 8px, 
+      100% 100%, 8px 100%, 0 calc(100% - 8px)
+    );
+  }
+
+  .pixel-input:focus {
+    outline: none;
+    box-shadow: 
+      inset 3px 3px 0px rgba(0,0,0,0.3),
+      inset -3px -3px 0px rgba(255,255,255,0.8),
+      0 0 0 3px #ffeb3b;
+  }
+
+  .pixel-progress {
+  @apply relative h-6 bg-gray-300 border-2 border-black overflow-hidden;
+    clip-path: polygon(
+      0 0, calc(100% - 6px) 0, 100% 6px, 
+      100% 100%, 6px 100%, 0 calc(100% - 6px)
+    );
+  }
+
+  .pixel-progress-bar {
+    @apply h-full transition-all duration-300;
+    background: linear-gradient(45deg, #4caf50 0%, #388e3c 50%, #2e7d32 100%);
+    box-shadow: inset -2px -2px 0px rgba(0,0,0,0.3);
+  }
+
+  .speech-bubble {
+    @apply relative p-6 bg-white border-4 border-black;
+    clip-path: polygon(
+      0 0, calc(100% - 16px) 0, 100% 16px, 
+      100% calc(100% - 32px), calc(100% - 16px) calc(100% - 16px),
+      32px calc(100% - 16px), 16px 100%, 0 calc(100% - 32px)
+    );
+    box-shadow: 6px 6px 0px #000;
+  }
+
+  .speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 32px;
+    width: 0;
+    height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-top: 20px solid white;
+    filter: drop-shadow(2px 2px 0px #000);
+  }
+
+  .pixel-timer-display {
+    @apply text-8xl font-bold text-center;
+    text-shadow: 
+      4px 4px 0px #000,
+      -2px -2px 0px rgba(255,255,255,0.3);
+    filter: drop-shadow(8px 8px 0px rgba(0,0,0,0.3));
+  }
+
+  .pixel-nav {
+    @apply border-b-4 border-black bg-gradient-to-r from-purple-600 to-blue-600;
+    box-shadow: 0 4px 0px #000;
+  }
+
+  .retro-bg {
+    background: 
+      radial-gradient(circle at 25% 25%, #ff6b6b 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, #4ecdc4 0%, transparent 50%),
+      linear-gradient(45deg, #45b7d1 0%, #96ceb4 50%, #ffeaa7 100%);
+    background-size: 200px 200px, 150px 150px, 100% 100%;
+    animation: retro-float 20s ease-in-out infinite;
+  }
+
+  .retro-bg-dark {
+    background: 
+      radial-gradient(circle at 25% 25%, #2d3748 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, #1a202c 0%, transparent 50%),
+      linear-gradient(45deg, #2d3748 0%, #4a5568 50%, #1a202c 100%);
+    background-size: 200px 200px, 150px 150px, 100% 100%;
+    animation: retro-float 20s ease-in-out infinite;
+  }
+}
+
+@keyframes retro-float {
+  0%, 100% { background-position: 0% 0%, 100% 100%, 0% 0%; }
+  25% { background-position: 100% 0%, 0% 100%, 0% 0%; }
+  50% { background-position: 100% 100%, 0% 0%, 0% 0%; }
+  75% { background-position: 0% 100%, 100% 0%, 0% 0%; }
+}
+
+@keyframes pixel-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes pixel-bounce {
+  0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+  40%, 43% { transform: translateY(-8px); }
+  70% { transform: translateY(-4px); }
+  90% { transform: translateY(-2px); }
+}
+
+.pixel-pulse {
+  animation: pixel-pulse 2s ease-in-out infinite;
+}
+
+.pixel-bounce {
+  animation: pixel-bounce 2s ease-in-out infinite;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  body {
+    font-size: 6px;
+  }
+  
+  .pixel-timer-display {
+    @apply text-4xl;
+  }
+  
+  .pixel-card {
+    @apply p-4;
+  }
+}
+
+/* Notification styles */
+.notification-permission {
+  @apply fixed top-4 right-4 z-50;
+}
